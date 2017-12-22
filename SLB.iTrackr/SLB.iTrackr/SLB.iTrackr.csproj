@@ -1,0 +1,376 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9E5F04A5-BB03-43DC-9E9E-EB3CA75B8DFB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SLB.iTrackr</RootNamespace>
+    <AssemblyName>SLB.iTrackr</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Profile111</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <NuGetPackageImportStamp>4db522bd</NuGetPackageImportStamp>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Configs\ColorScheme.cs" />
+    <Compile Include="Helpers\Settings.cs" />
+    <Compile Include="Models\AttachmentContent.cs" />
+    <Compile Include="Models\Client.cs" />
+    <Compile Include="Models\ClientsContent.cs" />
+    <Compile Include="Models\Credential.cs" />
+    <Compile Include="Models\TaskPageParam.cs" />
+    <Compile Include="Models\Ticket.cs" />
+    <Compile Include="Models\TicketContent.cs" />
+    <Compile Include="Navigation\CustomNavigation.cs" />
+    <Compile Include="PageModels\AboutPageModel.cs" />
+    <Compile Include="PageModels\ArchivePageModel.cs" />
+    <Compile Include="PageModels\HomePageModel.cs" />
+    <Compile Include="PageModels\NewTicketPageModel.cs" />
+    <Compile Include="PageModels\ReportPageModel.cs" />
+    <Compile Include="PageModels\SearchPageModel.cs" />
+    <Compile Include="PageModels\SettingPageModel.cs" />
+    <Compile Include="PageModels\TaskDetailPageModel.cs" />
+    <Compile Include="PageModels\TaskPageModel.cs" />
+    <Compile Include="PageModels\UploadPageModel.cs" />
+    <Compile Include="Pages\AboutPage.xaml.cs">
+      <DependentUpon>AboutPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ArchivePage.xaml.cs">
+      <DependentUpon>ArchivePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\HomePage.xaml.cs">
+      <DependentUpon>HomePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\NewTicketPage.xaml.cs">
+      <DependentUpon>NewTicketPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ReportPage.xaml.cs">
+      <DependentUpon>ReportPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SearchPage.xaml.cs">
+      <DependentUpon>SearchPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SettingPage.xaml.cs">
+      <DependentUpon>SettingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TaskDetailPage.xaml.cs">
+      <DependentUpon>TaskDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TaskPage.xaml.cs">
+      <DependentUpon>TaskPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\UploadPage.xaml.cs">
+      <DependentUpon>UploadPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\ICredentialService.cs" />
+    <Compile Include="Utils\ISQLiteService.cs" />
+    <Compile Include="Utils\SPService.cs" />
+    <Compile Include="Utils\StringToImageSource.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="App.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="FreshIOC, Version=1.0.6071.17008, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\FreshMvvm.2.2.0\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\FreshIOC.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FreshMvvm, Version=1.0.6071.17008, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\FreshMvvm.2.2.0\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\FreshMvvm.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Plugin.Settings, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xam.Plugins.Settings.2.1.0\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\Plugin.Settings.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Plugin.Settings.Abstractions, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xam.Plugins.Settings.2.1.0\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\Plugin.Settings.Abstractions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PropertyChanged, Version=1.51.3.0, Culture=neutral, PublicKeyToken=ee3ee20bcf148ddd, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\PropertyChanged.Fody.1.51.3\Lib\portable-net4+sl4+wp8+win8+wpa81+MonoAndroid16+MonoTouch40\PropertyChanged.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SQLite-net, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\sqlite-net-pcl.1.1.2\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10\SQLite-net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SQLitePCL.batteries, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SQLitePCL.bundle_green.0.9.2\lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid10+MonoTouch10+Xamarin.iOS10\SQLitePCL.batteries.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SQLitePCL.raw, Version=0.9.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SQLitePCL.raw.0.9.2\lib\portable-net45+netcore45+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\SQLitePCL.raw.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Core, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.Forms.2.3.1.114\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Platform, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.Forms.2.3.1.114\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Platform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Xaml, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.Forms.2.3.1.114\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\HomePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\MenuHome.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\MenuReport.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\MenuSetting.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\MenuAbout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\ArchivePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\ReportPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\SettingPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\AboutPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\TaskPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\RightArrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\iTrackrLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\MenuNewTicket.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\NewTicketPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\MenuArchive.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="FodyWeavers.xml" />
+    <EmbeddedResource Include="Resources\AttachmentButton.png" />
+    <EmbeddedResource Include="Resources\Search.png" />
+    <EmbeddedResource Include="Resources\Task1.png" />
+    <EmbeddedResource Include="Resources\Task2.png" />
+    <EmbeddedResource Include="Resources\Task3.png" />
+    <EmbeddedResource Include="Resources\Task4.png" />
+    <EmbeddedResource Include="Resources\Task5.png" />
+    <EmbeddedResource Include="Resources\Task6.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph0.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph1.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph10.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph100.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph11.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph12.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph13.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph14.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph15.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph16.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph17.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph18.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph19.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph2.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph20.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph21.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph22.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph23.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph24.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph25.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph26.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph27.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph28.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph29.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph3.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph30.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph31.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph32.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph33.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph34.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph35.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph36.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph37.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph38.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph39.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph4.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph40.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph41.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph42.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph43.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph44.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph45.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph46.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph47.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph48.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph49.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph5.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph50.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph51.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph52.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph53.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph54.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph55.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph56.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph57.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph58.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph59.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph6.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph60.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph61.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph62.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph63.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph64.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph65.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph66.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph67.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph68.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph69.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph7.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph70.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph71.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph72.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph73.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph74.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph75.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph76.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph77.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph78.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph79.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph8.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph80.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph81.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph82.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph83.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph84.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph85.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph86.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph87.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph88.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph89.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph9.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph90.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph91.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph92.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph93.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph94.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph95.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph96.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph97.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph98.png" />
+    <EmbeddedResource Include="Resources\RadiusGraph99.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\TaskDetailPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\SearchPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\UploadPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\packages\Xamarin.Forms.2.3.1.114\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Forms.2.3.1.114\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets'))" />
+    <Error Condition="!Exists('..\..\packages\Fody.1.29.4\build\portable-net+sl+win+wpa+wp\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Fody.1.29.4\build\portable-net+sl+win+wpa+wp\Fody.targets'))" />
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <Import Project="..\..\packages\Xamarin.Forms.2.3.1.114\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.1.114\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
+  <Import Project="..\..\packages\Fody.1.29.4\build\portable-net+sl+win+wpa+wp\Fody.targets" Condition="Exists('..\..\packages\Fody.1.29.4\build\portable-net+sl+win+wpa+wp\Fody.targets')" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

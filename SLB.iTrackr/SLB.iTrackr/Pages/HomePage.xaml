@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  x:Class="SLB.iTrackr.Pages.HomePage"
+                  xmlns:utils="clr-namespace:SLB.iTrackr.Utils;assembly=SLB.iTrackr"
+                  Title="Home">
+  <ContentPage.ToolbarItems>
+    <ToolbarItem Icon="Search.png" Command="{Binding SearchCommand}"></ToolbarItem>
+  </ContentPage.ToolbarItems>
+  <ContentPage.Content>   
+    <StackLayout>
+      <Grid RowSpacing="1" ColumnSpacing="1" BackgroundColor="#30000000" VerticalOptions="FillAndExpand">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="2*" />
+          <RowDefinition Height="*" />
+          <RowDefinition Height="*" />
+          <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <ActivityIndicator 
+          Grid.Row="0" 
+          Grid.Column="0"
+          Grid.ColumnSpan="2"
+          HeightRequest="80" 
+          IsRunning="{Binding IsBusy}" 
+          IsVisible="{Binding IsBusy}" />
+        <StackLayout
+          IsVisible="{Binding IsNotBusy}"
+          Grid.Row="0" 
+          Grid.Column="0" 
+          Grid.ColumnSpan="2" 
+          BackgroundColor="#2196F3" 
+          HorizontalOptions="FillAndExpand" 
+          VerticalOptions="FillAndExpand">
+          <Label 
+            HorizontalOptions="Center"
+            FontSize="Medium" 
+            Text="Average Days to Complete"
+            TextColor="White"/>
+          <Label
+            HorizontalOptions="Center"
+            FontSize="60" 
+            Text="{Binding DaysToComplete}"
+            TextColor="White"/>
+          <Grid BackgroundColor="#30000000" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="5,5,5,5">
+            <Grid.RowDefinitions>
+              <RowDefinition Height="*" />
+              <RowDefinition Height="3*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="*" />
+              <ColumnDefinition Width="*" />
+              <ColumnDefinition Width="*" />
+              <ColumnDefinition Width="*" />
+              <ColumnDefinition Width="*" />
+              <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" Text="Task 1" TextColor="White" FontSize="12" />
+            <Label Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" Text="Task 2" TextColor="White" FontSize="12" />
+            <Label Grid.Row="0" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center" Text="Task 3" TextColor="White" FontSize="12" />
+            <Label Grid.Row="0" Grid.Column="3" HorizontalOptions="Center" VerticalOptions="Center" Text="Task 4" TextColor="White" FontSize="12" />
+            <Label Grid.Row="0" Grid.Column="4" HorizontalOptions="Center" VerticalOptions="Center" Text="Task 5" TextColor="White" FontSize="12" />
+            <Label Grid.Row="0" Grid.Column="5" HorizontalOptions="Center" VerticalOptions="Center" Text="Task 6" TextColor="White" FontSize="12" />
+            <Image Grid.Row="1" Grid.Column="0" Aspect="AspectFit" Source="{Binding Task1ChartImage}"/>
+            <Image Grid.Row="1" Grid.Column="1" Aspect="AspectFit" Source="{Binding Task2ChartImage}"/>
+            <Image Grid.Row="1" Grid.Column="2" Aspect="AspectFit" Source="{Binding Task3ChartImage}"/>
+            <Image Grid.Row="1" Grid.Column="3" Aspect="AspectFit" Source="{Binding Task4ChartImage}"/>
+            <Image Grid.Row="1" Grid.Column="4" Aspect="AspectFit" Source="{Binding Task5ChartImage}"/>
+            <Image Grid.Row="1" Grid.Column="5" Aspect="AspectFit" Source="{Binding Task6ChartImage}"/>
+          </Grid>
+        </StackLayout>
+        <StackLayout Grid.Row="1" Grid.Column="0" BackgroundColor="White" Padding="0,10,0,0">
+          <Image x:Name="Task1Menu" Aspect="AspectFit" HeightRequest="60" Source="{utils:StringToImageSource SLB.iTrackr.Resources.Task1.png}">
+            <Image.GestureRecognizers>
+              <TapGestureRecognizer
+                Command="{Binding MenuTapped}"
+                CommandParameter="Task1" />
+            </Image.GestureRecognizers>
+          </Image>
+          <Label HorizontalOptions="Center" Text="Job Package Completion" TextColor="Gray" FontSize="13"/>
+        </StackLayout>
+        <StackLayout Grid.Row="1" Grid.Column="1" BackgroundColor="White" Padding="0,10,0,0">
+          <Image x:Name="Task2Menu" Aspect="AspectFit" HeightRequest="60" Source="{utils:StringToImageSource SLB.iTrackr.Resources.Task2.png}">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer
+                  Command="{Binding MenuTapped}"
+                  CommandParameter="Task2" />
+            </Image.GestureRecognizers>
+          </Image>
+        <Label HorizontalOptions="Center" Text="Ticket Shipment to Town" TextColor="Gray" FontSize="13"/>
+        </StackLayout>
+        <StackLayout Grid.Row="2" Grid.Column="0" BackgroundColor="White" Padding="0,10,0,0">
+          <Image x:Name="Task3Menu" Aspect="AspectFit" HeightRequest="60" Source="{utils:StringToImageSource SLB.iTrackr.Resources.Task3.png}">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer
+                  Command="{Binding MenuTapped}"
+                  CommandParameter="Task3" />
+            </Image.GestureRecognizers>
+          </Image>
+          <Label HorizontalOptions="Center" Text="Compile Job Package" TextColor="Gray" FontSize="13"/>
+        </StackLayout>
+        <StackLayout Grid.Row="2" Grid.Column="1" BackgroundColor="White" Padding="0,10,0,0">
+          <Image x:Name="Task4Menu" Aspect="AspectFit" HeightRequest="60" Source="{utils:StringToImageSource SLB.iTrackr.Resources.Task4.png}">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer
+                  Command="{Binding MenuTapped}"
+                  CommandParameter="Task4" />
+            </Image.GestureRecognizers>
+          </Image>
+          <Label HorizontalOptions="Center" Text="PI Creation" TextColor="Gray" FontSize="13"/>
+        </StackLayout>
+        <StackLayout Grid.Row="3" Grid.Column="0" BackgroundColor="White" Padding="0,10,0,0">
+          <Image x:Name="Task5Menu" Aspect="AspectFit" HeightRequest="60" Source="{utils:StringToImageSource SLB.iTrackr.Resources.Task5.png}">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer
+                  Command="{Binding MenuTapped}"
+                  CommandParameter="Task5" />
+            </Image.GestureRecognizers>
+          </Image>
+          <Label HorizontalOptions="Center" Text="Client Submission Review" TextColor="Gray" FontSize="13"/>
+        </StackLayout>
+        <StackLayout Grid.Row="3" Grid.Column="1" BackgroundColor="White" Padding="0,10,0,0">
+          <Image x:Name="Task6Menu" Aspect="AspectFit" HeightRequest="60" Source="{utils:StringToImageSource SLB.iTrackr.Resources.Task6.png}">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer
+                  Command="{Binding MenuTapped}"
+                  CommandParameter="Task6" />
+            </Image.GestureRecognizers>
+          </Image>
+          <Label HorizontalOptions="Center" Text="Invoice Creation" TextColor="Gray" FontSize="13"/>
+        </StackLayout>        
+      </Grid>
+    </StackLayout>
+  </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SLB.iTrackr.Pages.TaskPage"
+             Title="{Binding Title}">
+  <ContentPage.Content >
+    <Grid BackgroundColor="#F0F0F0">
+      <Grid.RowDefinitions>
+        <RowDefinition />
+      </Grid.RowDefinitions>    
+      <ActivityIndicator Grid.Row="0" IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" Scale="0.1"/>
+      <ListView
+        IsVisible="{Binding IsNotBusy}"        
+        Grid.Row="0"
+        ItemsSource="{Binding Tickets}"
+        RowHeight="75"
+        SeparatorVisibility="None"
+        SelectedItem="{Binding SelectedTicket, Mode=TwoWay}">
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <ViewCell>
+              <StackLayout Orientation="Horizontal" Margin="10, 5, 10, 5" BackgroundColor="White">
+                <BoxView Color="{Binding StatusColor}" WidthRequest="5"></BoxView>
+                <StackLayout WidthRequest="50" HorizontalOptions="Fill">
+                  <StackLayout BackgroundColor="{Binding StatusColor}" HorizontalOptions="Fill">
+                    <Label VerticalOptions="Center" HorizontalOptions="Center" Text="{Binding DueDate, StringFormat='{0:MMM}'}" TextColor="White"/>
+                  </StackLayout>
+                  <Label VerticalOptions="Center" HorizontalOptions="Center" Text="{Binding DueDate, StringFormat='{0:dd}'}" FontSize="24" />
+                </StackLayout>
+                <StackLayout>
+                  <Label Text="{Binding Client}" />
+                  <Label Text="{Binding ListViewDetail}" />
+                </StackLayout>
+              </StackLayout>
+            </ViewCell>
+          </DataTemplate>
+        </ListView.ItemTemplate>
+      </ListView>
+    </Grid>
+  </ContentPage.Content>
+</ContentPage>

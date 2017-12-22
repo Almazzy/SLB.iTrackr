@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SLB.iTrackr.Pages.TaskDetailPage"
+             xmlns:configs="clr-namespace:SLB.iTrackr.Configs;assembly=SLB.iTrackr"
+             xmlns:utils="clr-namespace:SLB.iTrackr.Utils;assembly=SLB.iTrackr"
+             Title="{Binding Ticket.TicketStatus}">
+  <ContentPage.Content>
+    <StackLayout>
+    <ScrollView>
+      <StackLayout>
+        <TableView Intent="Data">
+          <TableRoot>
+            <TableSection Title="Ticket Information">
+              <EntryCell Label="FTL Number" Text="{Binding Ticket.FTLNumber}" IsEnabled="{Binding FTLEnable}" />
+              <EntryCell Label="IDistrict Job Id" Text="{Binding Ticket.IDistrictJobID}" IsEnabled="False" />              
+              <EntryCell Label="Client" Text="{Binding Ticket.Client}" IsEnabled="False" />
+              <EntryCell Label="Well Name" Text="{Binding Ticket.WellName}" IsEnabled="False" />                         
+            </TableSection> 
+          </TableRoot>
+        </TableView>
+        <StackLayout Orientation="Horizontal" Padding="18, 0, 0, 0">
+          <Label Text="Job Start Date" VerticalOptions="Center" />
+          <DatePicker Date="{Binding Ticket.JobStartDate}" Format="ddd dd MMM yyyy" IsEnabled="{Binding JobDateEnable}"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" Padding="18, 0, 0, 0">
+          <Label Text="Job End Date" VerticalOptions="Center" />
+          <DatePicker Date="{Binding Ticket.JobEndDate}" Format="ddd dd MMM yyyy" IsEnabled="{Binding JobDateEnable}"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" Padding="18, 0, 0, 0">
+          <Label Text="Ticket Value" VerticalOptions="Center" HorizontalOptions="Fill"/>
+          <Entry Text="{Binding Ticket.Currency}" IsEnabled="{Binding CurrencyEnable}" />
+          <Entry Text="{Binding Ticket.TicketValue}" IsEnabled="{Binding TicketValueEnable}" />
+        </StackLayout>
+        <StackLayout Padding="18, 0, 0, 0">
+          <Label Text="Job Type:"></Label>
+          <Editor Text="{Binding Ticket.JobType}" IsEnabled="{Binding JobTypeEnable}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="100"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" Padding="18, 0, 0, 0" IsVisible="{Binding ShipmentVisible}">
+          <Label Text="JP Shipment Date" VerticalOptions="Center" />
+          <DatePicker Date="{Binding Ticket.JPShipmentDate}" Format="ddd dd MMM yyyy" IsEnabled="{Binding ShipmentEnable}"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" Padding="18, 0, 0, 0" IsVisible="{Binding ShipmentVisible}">
+          <Label Text="JP Shipment Type:" />          
+          <Picker x:Name="picker" SelectedIndex="{Binding JPShipmentTypeIndex}" HorizontalOptions="FillAndExpand" IsEnabled="{Binding ShipmentEnable}">
+            <Picker.Items>
+              <x:String>Hand Carry</x:String>
+              <x:String>JNE</x:String>
+              <x:String>TIKI</x:String>
+              <x:String>DHL</x:String>
+            </Picker.Items>
+          </Picker>
+        </StackLayout>        
+        <StackLayout Padding="18, 0, 0, 0" IsVisible="{Binding ShipmentVisible}">
+          <Label Text="Remarks:" />
+          <Editor Text="{Binding Ticket.Remarks}" IsEnabled="{Binding ShipmentEnable}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="100"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" Padding="18, 0, 0, 0">
+          <Image Aspect="AspectFit" HeightRequest="80" Source="{utils:StringToImageSource SLB.iTrackr.Resources.AttachmentButton.png}">
+            <Image.GestureRecognizers>
+              <TapGestureRecognizer Command="{Binding MenuTapped}"/>
+            </Image.GestureRecognizers>
+          </Image>
+          <StackLayout Orientation="Vertical" Padding="18, 0, 0, 0">
+            <Label Text="Attachment1"></Label>
+            <Label Text="Attachment2"></Label>
+            <Label Text="Attachment3"></Label>
+          </StackLayout>          
+        </StackLayout>
+        <TableView>
+          <TableRoot>
+            <TableSection Title="Task Completion Status">
+              <EntryCell Label="Due Date" Text="{Binding DueDate, StringFormat='{0:ddd dd MMMM yyyy}'}" IsEnabled="False" />
+              <SwitchCell x:Name="Done" Text="Task Done ?" On="{Binding TaskDone}"></SwitchCell>
+            </TableSection>
+          </TableRoot>
+        </TableView>        
+      </StackLayout>    
+    </ScrollView>
+    <Button Command="{Binding SaveCommand}" Text="Save" BackgroundColor="{x:Static configs:ColorScheme.PrimaryColor}" TextColor="White"></Button>
+    </StackLayout>
+  </ContentPage.Content>
+</ContentPage>
